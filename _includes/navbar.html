@@ -1,0 +1,22 @@
+<header class="sticky top-0 z-50 border-b border-white/10 bg-navy/[0.62] backdrop-blur-lg backdrop-saturate-150">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-8 px-8 py-4">
+        <a href="{{ "/" | relative_url }}" class="flex items-center gap-3.5">
+            <div class="flex flex-row gap-4">
+                <img src="/assets/images/icon.svg" height="48" width="48">
+                <div class="flex flex-col gap-1 leading-tight">
+                    <h5 class="font-serif text-lg font-semibold tracking-wide text-cream">Piwo Paliwo</h5>
+                    <h6 class="text-sm uppercase tracking-xs text-mist">sailing.piwopaliwo.pl</h6>
+                </div>
+            </div>
+        </a>
+        <nav class="hidden items-center gap-8 md:flex">
+            <a href="{{ '/' | relative_url }}" class="border-b-2 border-transparent pb-1 text-sm font-medium text-white  hover:border-gold">Home</a>
+            <a href="{{ '/routes' | relative_url }}" class="border-b-2 border-transparent pb-1 text-sm font-medium text-white  hover:border-gold">Itineraries</a>
+            <a href="{{ '/boats' | relative_url }}" class="border-b-2 border-transparent pb-1 text-sm font-medium text-[#e8ecef] hover:border-gold">Boats</a>
+            <a href="{{ '/pl/vocabulary' | relative_url }}" class="border-b-2 border-transparent pb-1 text-sm font-medium text-[#e8ecef] hover:border-gold">Vocabulary</a>
+            <a href="{{ 'https://piwopaliwo.pl/blog' | absolute_url }}" class="border-b-2 border-transparent pb-1 text-sm font-medium text-[#e8ecef] hover:border-gold">Blog</a>
+        </nav>
+
+        {% include language-switch.html %}
+    </div>
+</header>

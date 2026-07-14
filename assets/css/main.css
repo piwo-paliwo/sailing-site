@@ -1,0 +1,86 @@
+---
+---
+
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --font-serif: "Noto Serif", serif;
+    --font-sans: "Outfit", sans-serif;
+    --color-navy: #0d2436;
+    --color-navy-light: #123048;
+    --color-navy-lighter: #173952;
+    --color-gold: #c9a227;
+    --color-gold-dark: #a08324;
+    --color-cream: #faf7f1;
+    --color-sand: #e9e2d1;
+    --color-ink: #16232c;
+    --color-slate: #4a5560;
+    --color-mist: #7fa0b8;
+    --color-fog: #c3d2dd;
+
+    --color-primary: var(--color-navy);
+    --color-secondary: var(--color-slate);
+    --color-tertiary: var(--color-sand);
+    --color-accent: var(--color-gold);
+}
+
+@layer base {
+    body {
+        background-color: var(--color-cream);
+        color: var(--color-ink);
+        font-family: var(--font-sans);
+    }
+
+    ::selection {
+        background: var(--color-gold);
+        color: var(--color-navy);
+    }
+}
+
+@layer components {
+    .prose-sailing h1,
+    .prose-sailing h2,
+    .prose-sailing h3 {
+        font-family: var(--font-serif);
+        font-weight: 600;
+        color: var(--color-navy);
+        margin: 1.5em 0 0.6em;
+    }
+
+    .prose-sailing h1 {
+        font-size: 2.25rem;
+    }
+
+    .prose-sailing h2 {
+        font-size: 1.75rem;
+    }
+
+    .prose-sailing h3 {
+        font-size: 1.3rem;
+    }
+
+    .prose-sailing p {
+        color: var(--color-slate);
+        line-height: 1.7;
+        margin: 0 0 1.2em;
+    }
+
+    .prose-sailing a {
+        color: var(--color-navy);
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 1px solid var(--color-gold);
+    }
+
+    .prose-sailing ul,
+    .prose-sailing ol {
+        color: var(--color-slate);
+        line-height: 1.7;
+        margin: 0 0 1.2em;
+        padding-left: 1.4em;
+    }
+}
