@@ -1,0 +1,77 @@
+{% assign current_lang = page.lang | default: "en" %} {% assign locales =
+site.data.locales %} {% comment %} strip the current locale prefix off page.url
+to get a locale-agnostic path {% endcomment %} {% assign path_no_locale =
+page.url %} {% for loc in locales %} {% assign prefix_slash = "/" | append:
+loc.code | append: "/" %} {% assign prefix_only = "/" | append: loc.code %} {%
+if path_no_locale == prefix_only %} {% assign path_no_locale = "/" %} {% elsif
+path_no_locale contains prefix_slash %} {% assign path_no_locale =
+path_no_locale | remove_first: prefix_only %} {% endif %} {% endfor %} {% if
+path_no_locale == "" %}{% assign path_no_locale = "/" %}{% endif %}
+
+<div class="fixed bottom-4 right-4 z-100" data-locale-toggle>
+    <button
+        type="button"
+        class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border/20 bg-secondary-foreground/10 text-xs font-semibold shadow-sm transition-colors hover:bg-foreground/50 hover:text-accent-foreground antialiased backdrop-blur-xs"
+        data-locale-trigger
+        aria-haspopup="true"
+        aria-expanded="false"
+    >
+        {{ current_lang | upcase }}
+    </button>
+
+    <div
+        class="locale-menu absolute bottom-full right-0 z-50 mb-2 hidden min-w-[8rem] origin-bottom-right rounded-md border bg-popover/50 antialiased backdrop-blur-xs border-border/20 p-1 text-popover-foreground shadow-md transition data-[open]:animate-in data-[open]:fade-in-0 data-[open]:zoom-in-95"
+        data-locale-content
+        role="menu"
+    >
+        {% for loc in locales %} {% assign target_url = "/" | append: loc.code |
+        append: path_no_locale %} {% assign target_url = target_url | replace:
+        "//", "/" %}
+        <a
+            href="{{ target_url | relative_url }}"
+            role="menuitem"
+            class="flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden hover:bg-accent hover:text-accent-foreground {% if loc.code == current_lang %}font-semibold{% endif %}"
+        >
+            <span>{{ loc.flag }}</span>
+            <span>{{ loc.label }}</span>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    (function () {
+        document
+            .querySelectorAll("[data-locale-toggle]")
+            .forEach(function (root) {
+                var trigger = root.querySelector("[data-locale-trigger]");
+                var content = root.querySelector("[data-locale-content]");
+
+                function close() {
+                    content.classList.add("hidden");
+                    content.removeAttribute("data-open");
+                    trigger.setAttribute("aria-expanded", "false");
+                }
+                function open() {
+                    content.classList.remove("hidden");
+                    content.setAttribute("data-open", "");
+                    trigger.setAttribute("aria-expanded", "true");
+                }
+
+                trigger.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    trigger.getAttribute("aria-expanded") === "true"
+                        ? close()
+                        : open();
+                });
+
+                document.addEventListener("click", function (e) {
+                    if (!root.contains(e.target)) close();
+                });
+
+                document.addEventListener("keydown", function (e) {
+                    if (e.key === "Escape") close();
+                });
+            });
+    })();
+</script>

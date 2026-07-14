@@ -1,23 +1,52 @@
-<footer class="border-t border-[#1f3d54] bg-navy">
+{% assign current_lang = page.lang | default: "en" %}
+<footer class="border-t border-[#1f3d54] bg-background">
     <div class="mx-auto max-w-6xl px-8 pb-8 pt-14">
-        <div class="flex flex-wrap justify-between gap-8 border-b border-[#1f3d54] pb-9">
+        <div
+            class="flex flex-wrap justify-between gap-8 border-b border-[#1f3d54] pb-9"
+        >
             <div class="flex max-w-sm flex-col gap-2.5">
-                <span class="font-serif text-xl font-semibold text-cream">Piwo Paliwo</span>
-                <p class="text-[13.5px] leading-relaxed text-mist">
-                    A record of routes sailed, boats chartered, and words learned at sea.
+                <h3
+                    class="font-serif text-xl font-bold text-primary-foreground"
+                >
+                    Piwo Paliwo 2.0
+                </h3>
+                <p class="text-[13.5px] leading-relaxed text-secondary">
+                    Organizacja piwno-żeglarska.
                 </p>
             </div>
-            <div class="flex flex-col gap-2.5">
-                <span class="mb-1.5 text-xs font-semibold uppercase tracking-[1.5px] text-gold">Explore</span>
+            <div class="flex flex-col gap-2.5 text-secondary">
+                {% for item in site.data.nav %} {% assign nav_url = item.href |
+                prepend: current_lang | prepend: "/" %}
+                <a
+                    href="{{ nav_url | relative_url }}"
+                    class="border-b-2 border-transparent pb-1 text-sm font-medium text-secondary hover:border-accent uppercase"
+                >
+                    {{ item.label[current_lang] | default: item.label.en }}
+                </a>
+                {% endfor %}
+
+                <a
+                    href="{{ 'https://piwopaliwo.pl/blog' | absolute_url }}"
+                    class="border-b-2 border-transparent pb-1 text-sm font-medium text-secondary hover:border-accent"
+                    >Blog</a
+                >
+                <!-- <span class="mb-1.5 text-xs font-semibold uppercase tracking-[1.5px] text-gold">Explore</span>
                 <a href="{{ "/journal" | relative_url }}" class="text-[13.5px] text-fog">Journal</a>
                 <a href="{{ "/routes" | relative_url }}" class="text-[13.5px] text-fog">Itineraries</a>
                 <a href="{{ "/boats" | relative_url }}" class="text-[13.5px] text-fog">Boats</a>
-                <a href="{{ "/vocab" | relative_url }}" class="text-[13.5px] text-fog">Vocabulary</a>
+                <a href="{{ "/vocab" | relative_url }}" class="text-[13.5px] text-fog">Vocabulary</a> -->
             </div>
         </div>
-        <div class="flex flex-wrap items-center justify-between gap-3 pt-6">
-            <span class="text-[12.5px] text-[#5c7b91]">&copy; {{ 'now' | date: "%Y" }} sailing.piwopaliwo.pl</span>
-            <span class="font-serif text-[12.5px] italic text-[#5c7b91]">&ldquo;Fair winds and following seas.&rdquo;</span>
+        <div
+            class="flex flex-wrap items-center justify-between gap-3 pt-6 text-secondary"
+        >
+            <span class="text-[12.5px] text-[#5c7b91]">
+                &copy; <a href="https://piwopaliwo.pl">Piwo Paliwo 2.0</a> {{
+                'now' | date: "%Y" }}</span
+            >
+            <span class="font-serif text-[12.5px] italic text-[#5c7b91]"
+                >&ldquo;Kegi piwa nam nie zwiało...&rdquo;</span
+            >
         </div>
     </div>
 </footer>

@@ -18,7 +18,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Piwo Paliwo Sailing
+title: Piwo Paliwo 2.0 Sailing
+organization: Piwo Paliwo 2.0
 email: kontakt@piwopaliwo.pl
 description: >- # this means to ignore newlines until "baseurl:"
     Sailing hub of Piwo Paliwo

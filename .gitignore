@@ -4,3 +4,7 @@ _site
 .jekyll-metadata
 vendor
 node_modules
+.obsidian/workspace*.json
+.obsidian/appearance*.json
+.DS_Store
+.obsidian/plugins

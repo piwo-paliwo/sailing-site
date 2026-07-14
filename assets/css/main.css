@@ -6,29 +6,103 @@
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
 @plugin "@tailwindcss/typography";
+@import "tw-animate-css";
+
+:root {
+    --radius: 0.625rem;
+    --background: #123048;
+    --foreground: rgb(211, 230, 248);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.147 0.004 49.25);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.147 0.004 49.25);
+    --primary: #0d2436;
+    --primary-foreground: rgb(211, 232, 253);
+    --secondary: rgb(174, 206, 238);
+    --secondary-foreground: #123048;
+    --muted: oklch(0.97 0.001 106.424);
+    --muted-foreground: oklch(0.553 0.013 58.071);
+    --accent: oklch(0.85 0.18 80);
+    --accent-foreground: oklch(24.163% 0.06492 273.09);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.923 0.003 48.717);
+    --input: oklch(0.923 0.003 48.717);
+    --ring: oklch(0.709 0.01 56.259);
+}
+
+.dark {
+    --background: oklch(0.147 0.004 49.25);
+    --foreground: oklch(0.985 0.001 106.423);
+    --card: oklch(0.216 0.006 56.043);
+    --card-foreground: oklch(0.985 0.001 106.423);
+    --popover: oklch(0.216 0.006 56.043);
+    --popover-foreground: oklch(0.985 0.001 106.423);
+    --primary: oklch(0.923 0.003 48.717);
+    --primary-foreground: oklch(0.216 0.006 56.043);
+    --secondary: oklch(0.268 0.007 34.298);
+    --secondary-foreground: oklch(0.985 0.001 106.423);
+    --muted: oklch(0.268 0.007 34.298);
+    --muted-foreground: oklch(0.709 0.01 56.259);
+    --accent: oklch(0.8403 0.1724 84.08);
+    --accent-foreground: oklch(0.985 0.001 106.423);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.553 0.013 58.071);
+}
+
+@custom-variant dark (&:is(.dark *));
 
 @theme {
     --font-serif: "Noto Serif", serif;
     --font-sans: "Outfit", sans-serif;
-    --color-navy: #0d2436;
-    --color-navy-light: #123048;
-    --color-navy-lighter: #173952;
-    --color-gold: #c9a227;
-    --color-gold-dark: #a08324;
-    --color-cream: #faf7f1;
-    --color-sand: #e9e2d1;
-    --color-ink: #16232c;
-    --color-slate: #4a5560;
-    --color-mist: #7fa0b8;
-    --color-fog: #c3d2dd;
+    --radius: var(--radius);
 
-    --color-primary: var(--color-navy);
-    --color-secondary: var(--color-slate);
-    --color-tertiary: var(--color-sand);
-    --color-accent: var(--color-gold);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-navy: var(--navy);
+    --color-gold: var(--gold);
+    --color-cream: var(--cream);
+    --color-ink: var(--ink);
 }
 
 @layer base {
+    header {
+        @apply text-8xl font-serif font-extrabold;
+    }
+    h2,
+    h3 {
+        @apply uppercase font-extrabold text-primary;
+    }
+    h1 {
+        @apply text-6xl font-serif font-extrabold;
+    }
+    h2 {
+        @apply text-3xl;
+    }
+    h3 {
+        @apply text-2xl;
+    }
+    h4 {
+        @apply text-lg font-bold text-secondary-foreground;
+    }
     body {
         background-color: var(--color-cream);
         color: var(--color-ink);
@@ -38,49 +112,5 @@
     ::selection {
         background: var(--color-gold);
         color: var(--color-navy);
-    }
-}
-
-@layer components {
-    .prose-sailing h1,
-    .prose-sailing h2,
-    .prose-sailing h3 {
-        font-family: var(--font-serif);
-        font-weight: 600;
-        color: var(--color-navy);
-        margin: 1.5em 0 0.6em;
-    }
-
-    .prose-sailing h1 {
-        font-size: 2.25rem;
-    }
-
-    .prose-sailing h2 {
-        font-size: 1.75rem;
-    }
-
-    .prose-sailing h3 {
-        font-size: 1.3rem;
-    }
-
-    .prose-sailing p {
-        color: var(--color-slate);
-        line-height: 1.7;
-        margin: 0 0 1.2em;
-    }
-
-    .prose-sailing a {
-        color: var(--color-navy);
-        font-weight: 600;
-        text-decoration: none;
-        border-bottom: 1px solid var(--color-gold);
-    }
-
-    .prose-sailing ul,
-    .prose-sailing ol {
-        color: var(--color-slate);
-        line-height: 1.7;
-        margin: 0 0 1.2em;
-        padding-left: 1.4em;
     }
 }

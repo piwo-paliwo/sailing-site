@@ -1,0 +1,20 @@
+- ref: home
+  fallback: "/"
+  label:
+      en: Home
+      pl: Strona główna
+- ref: routes
+  href: "/routes"
+  label:
+      en: Itineraries
+      pl: Trasy
+- ref: boats
+  href: "/boats"
+  label:
+      en: Boats
+      pl: Łodzie
+- ref: vocabulary
+  href: "/vocabulary"
+  label:
+      en: Vocabulary
+      pl: Słownictwo

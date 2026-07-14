@@ -1,22 +1,114 @@
-<header class="sticky top-0 z-50 border-b border-white/10 bg-navy/[0.62] backdrop-blur-lg backdrop-saturate-150">
-    <div class="mx-auto flex max-w-6xl items-center justify-between gap-8 px-8 py-4">
-        <a href="{{ "/" | relative_url }}" class="flex items-center gap-3.5">
-            <div class="flex flex-row gap-4">
-                <img src="/assets/images/icon.svg" height="48" width="48">
-                <div class="flex flex-col gap-1 leading-tight">
-                    <h5 class="font-serif text-lg font-semibold tracking-wide text-cream">Piwo Paliwo</h5>
-                    <h6 class="text-sm uppercase tracking-xs text-mist">sailing.piwopaliwo.pl</h6>
+{% assign current_lang = page.lang | default: "en" %}
+<div class="fixed top-0 left-0 z-100 w-full max-w-screen flex px-8 border-b shadow-xs border-primary-foreground flex-col transition-all antialiased backdrop-blur-xs py-2 bg-primary-foreground/30">
+
+    <div class="w-full flex flex-row flex-nowrap items-center justify-between gap-4">
+
+        <div id="organization-info" class="flex flex-row flex-nowrap gap-8 h-16 items-center-safe transition-all origin-left">
+            <a href="{{ "/" | relative_url }}" class="flex items-center gap-3.5 flex-nowrap min-w-0 sm:min-w-[350px]">
+                <div class="flex flex-row flex-nowrap gap-8 h-16 items-center-safe transition-all origin-left">
+                    <img src="/assets/images/icon.svg" height="48" width="48">
+                    <div class="flex select-none flex-col flex-nowrap">
+                        <h2 class="text-xl! sm:text-3xl! color-primary! font-serif">
+                            {{ site.organization }}
+                        </h2>
+                        <h4 class="italic color-background! font-serif">Sailing</h4>
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
+
+        <!-- Desktop nav -->
         <nav class="hidden items-center gap-8 md:flex">
-            <a href="{{ '/' | relative_url }}" class="border-b-2 border-transparent pb-1 text-sm font-medium text-white  hover:border-gold">Home</a>
-            <a href="{{ '/routes' | relative_url }}" class="border-b-2 border-transparent pb-1 text-sm font-medium text-white  hover:border-gold">Itineraries</a>
-            <a href="{{ '/boats' | relative_url }}" class="border-b-2 border-transparent pb-1 text-sm font-medium text-[#e8ecef] hover:border-gold">Boats</a>
-            <a href="{{ '/pl/vocabulary' | relative_url }}" class="border-b-2 border-transparent pb-1 text-sm font-medium text-[#e8ecef] hover:border-gold">Vocabulary</a>
-            <a href="{{ 'https://piwopaliwo.pl/blog' | absolute_url }}" class="border-b-2 border-transparent pb-1 text-sm font-medium text-[#e8ecef] hover:border-gold">Blog</a>
+            {% for item in site.data.nav %}
+                {% assign nav_url = item.href | prepend: current_lang | prepend: "/" %}
+                <a href="{{ nav_url | relative_url }}"
+                   class="border-b-2 border-transparent pb-1 text-sm font-medium text-primary hover:border-accent">
+                    {{ item.label[current_lang] | default: item.label.en }}
+                </a>
+            {% endfor %}
+
+            <a href="{{ 'https://piwopaliwo.pl/blog' | absolute_url }}"
+               class="border-b-2 border-transparent pb-1 text-sm font-medium text-primary! hover:border-accent">Blog</a>
         </nav>
 
-        {% include language-switch.html %}
+        <!-- {% include language-switch.html %} -->
+
+        <!-- Mobile hamburger button -->
+        <button
+            id="mobile-menu-toggle"
+            type="button"
+            class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-primary hover:bg-primary-foreground/50 transition-colors"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+        >
+            <!-- Hamburger icon -->
+            <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <!-- Close icon -->
+            <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
     </div>
-</header>
+
+    <!-- Mobile dropdown menu -->
+    <nav
+        id="mobile-menu"
+        class="md:hidden hidden flex-col gap-1 w-full pt-4 pb-2"
+    >
+        {% for item in site.data.nav %}
+            {% assign nav_url = item.href | prepend: current_lang | prepend: "/" %}
+            <a href="{{ nav_url | relative_url }}"
+               class="block w-full px-2 py-2.5 rounded-md text-sm font-medium text-primary hover:bg-primary-foreground/50">
+                {{ item.label[current_lang] | default: item.label.en }}
+            </a>
+        {% endfor %}
+
+        <a href="{{ 'https://piwopaliwo.pl/blog' | absolute_url }}"
+           class="block w-full px-2 py-2.5 rounded-md text-sm font-medium text-primary! hover:bg-primary-foreground/50">Blog</a>
+    </nav>
+</div>
+
+<script>
+    (function () {
+        var toggleBtn = document.getElementById('mobile-menu-toggle');
+        var menu = document.getElementById('mobile-menu');
+        var iconOpen = document.getElementById('icon-open');
+        var iconClose = document.getElementById('icon-close');
+
+        if (!toggleBtn || !menu) return;
+
+        function closeMenu() {
+            menu.classList.add('hidden');
+            menu.classList.remove('flex');
+            iconOpen.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        function openMenu() {
+            menu.classList.remove('hidden');
+            menu.classList.add('flex');
+            iconOpen.classList.add('hidden');
+            iconClose.classList.remove('hidden');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+        }
+
+        toggleBtn.addEventListener('click', function () {
+            var isOpen = !menu.classList.contains('hidden');
+            isOpen ? closeMenu() : openMenu();
+        });
+
+        // Close when a link is clicked
+        menu.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Close on resize back to desktop
+        window.addEventListener('resize', function () {
+            if (window.innerWidth >= 768) closeMenu();
+        });
+    })();
+</script>

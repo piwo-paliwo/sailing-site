@@ -3,15 +3,15 @@
     <head>
         {% include head.html %}
     </head>
-    <body class="flex min-h-screen flex-col font-sans text-ink">
+    <body class="flex min-h-screen flex-col font-sans text-ink bg-foreground">
         {% include navbar.html %}
 
-        <main class="mx-auto w-full max-w-3xl flex-1 px-8 py-16">
-            <article class="prose-sailing">
+        <main class="mx-auto w-full max-w-3xl flex-1 px-8 py-24 pt-32 sm:pt-40">
+            <article class="prose prose-primary prose-lg dark:prose-invert prose-sm! md:prose-lg!">
                 {{ content }}
             </article>
         </main>
 
-        {% include footer.html %}
+        {% include footer.html %}{% include locale-toggle.html %}
     </body>
 </html>

@@ -1,0 +1,9 @@
+{
+  "useMarkdownLinks": true,
+  "userIgnoreFilters": [
+    "_includes/",
+    "_layouts/",
+    "assets/js/",
+    "assets/css/"
+  ]
+}
