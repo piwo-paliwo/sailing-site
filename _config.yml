@@ -44,3 +44,4 @@ plugins:
     - jekyll-seo-tag
     - jekyll-paginate
     - jekyll-sass-converter
+    - jekyll-postcss
