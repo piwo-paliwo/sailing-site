@@ -1,9 +1,17 @@
 <!doctype html>
-<html>
+<html lang="{{ site.lang | default: "en" }}">
     <head>
         {% include head.html %}
     </head>
-    <body class="text-3xl text-red-500 text-center">
-        {{ content }}
+    <body class="flex min-h-screen flex-col font-sans text-ink">
+        {% include navbar.html %}
+
+        <main class="mx-auto w-full max-w-3xl flex-1 px-8 py-16">
+            <article class="prose-sailing">
+                {{ content }}
+            </article>
+        </main>
+
+        {% include footer.html %}
     </body>
 </html>

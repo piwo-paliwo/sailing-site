@@ -12,9 +12,9 @@
             --bubble1: #ffe586;
         }
 
-        .shadow {
+        /* .shadow {
             filter: drop-shadow(0 35px 35px light-dark(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.25)));
-        }
+        } */
     </style>
     <g id='glass'>
         <defs>
