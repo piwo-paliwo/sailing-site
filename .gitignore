@@ -8,3 +8,4 @@ node_modules
 .obsidian/appearance*.json
 .DS_Store
 .obsidian/plugins
+.obsidian/graph.json
