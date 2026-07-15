@@ -18,10 +18,10 @@
   property syntax, which needs Tailwind v3.1+.
 {%- endcomment -%}
 
-{%- assign locale = include.locale | default: page.lang | default: site.lang | default: "pl" -%}
+{%- assign locale = include.locale | default: page.lang | default: site.lang | default: "" -%}
 {%- assign filtered = site.data.carousel-dictionary | where: "locale", locale -%}
 {%- if filtered.size == 0 -%}
-  {%- assign filtered = site.data.carousel-dictionary | where: "locale", "pl" -%}
+  {%- assign filtered = site.data.carousel-dictionary -%}
 {%- endif -%}
 
 <div class="overflow-hidden">
