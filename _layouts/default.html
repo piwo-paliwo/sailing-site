@@ -6,8 +6,19 @@
     <body class="flex min-h-screen flex-col font-sans text-ink bg-foreground">
         {% include navbar.html %}
 
-        <main class="mx-auto w-full max-w-3xl flex-1 px-8 py-24 pt-32 sm:pt-40">
-            <article class="prose prose-primary prose-lg dark:prose-invert prose-sm! md:prose-lg! marker:text-primary">
+        <main class=" px-8 py-24 pt-32 sm:pt-40 flex flex-col gap-16 items-center">
+            <section data-slot="article-head" class="flex flex-col gap-12 overflow-x-hidden max-w-[1200px] mx-auto w-full">
+                <header class="text-4xl sm:text-7xl leading-[1.2] text-wrap overflow-x-hidden overflow-y-clip h-full">{{page.title}}</header>
+                <div class="flex flex-row items-center-safe justify-between">
+                       {%- if page.author -%} {%- assign user =
+            site.data.authors[page.author] -%} {% include avatar.html user=user
+            showName=true %} {%- endif -%}
+                <p class="italic font-normal">
+                {{ page.date | date: "%-d.%m.%Y" }}
+            </p>
+                </div>
+            </section>
+            <article class="prose prose-primary prose-lg dark:prose-invert prose-sm! md:prose-lg! marker:text-primary prose-hr:border-primary mx-auto w-full max-w-[1200px] flex-1">
                 {{ content }}
             </article>
         </main>

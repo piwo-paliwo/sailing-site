@@ -1,20 +1,39 @@
 {%- assign post = include post-%}
 <a class="not-prose" href="{{ post.url }}"
     ><div
-        class="not-prose bg-secondary/20 text-background border-background/30 flex flex-col gap-6 rounded-xl border py-6 shadow-sm hover:shadow-md transition-all ease-in-out"
+        data-slot="card"
+        class="not-prose bg-secondary/20 text-background border-background/30 flex flex-col gap-6 rounded-xl border py-6 shadow-sm hover:shadow-md transition-all ease-in-out max-w-100 hover:border-background/50"
     >
         <div
+            data-slot="card-header"
             class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6"
         >
-            <h3
-                class="leading-none uppercase font-serif font-semibold not-prose"
+            <div
+                data-slot="card-title"
+                class="leading-[1.5] font-medium font-serif not-prose"
             >
                 {{post.title}}
-            </h3>
+            </div>
+            <div
+                data-slot="card-description"
+                class="text-background text-sm font-serif font-light"
+            >
+                {{ post.date | date: "%-d.%m.%Y" }}
+            </div>
         </div>
-        <div class="px-6">
-            <img class="rounded-md" src="{{ post.thumbnail }}" />
+        <div data-slot="card-content" class="px-6">
+            <img
+                class="rounded-md aspect-2/1 object-cover shadow-md border-background/30 hover:border-background-50"
+                src="{{ post.thumbnail }}"
+            />
         </div>
-        <!-- <div class="flex items-center px-6 [.border-t]:pt-6"></div> -->
+        <div
+            data-slot="card-footer"
+            class="flex items-center px-6 [.border-t]:pt-6"
+        >
+            {%- if post.author -%} {%- assign user =
+            site.data.authors[post.author] -%} {% include avatar.html user=user
+            showName=true %} {%- endif -%}
+        </div>
     </div>
 </a>

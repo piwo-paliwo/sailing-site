@@ -1,23 +1,27 @@
 ---
 layout: default
-title: Sailing vocabulary handbook
+title: Sailing Glossary (English-Polish)
 lang: en
 ref: vocabulary
 ---
-# Sailing Glossary (English-Polish)
 
 This glossary describes basic sailing concepts translated from English into Polish. It is a mirror image of the [glossary in Polish](pl/vocabulary.md).
 
 ---
 
 ## Yacht Construction
+
 This subsection contains concepts describing the construction of a yacht.
+
 ### Spaces on the yacht
+
 - Saloon - Mesa
 - Galley - Kambuz
 - Cabin - Kajuta
 - Head - Kingston
+
 ### Hull
+
 - Bow - Dziub
 - Stern - Rufa
 - Starboard - Prawa burta
@@ -38,7 +42,9 @@ This subsection contains concepts describing the construction of a yacht.
 - Clam Cleat - Knaga zaciskowa
 - Hull - Kadłub
 - Top Mast - Stenga
+
 ### Equipment
+
 - Winch - Kabestan
 - Winch handle - Korba do kabestanu
 - Fender - Odbijacz
@@ -55,7 +61,9 @@ This subsection contains concepts describing the construction of a yacht.
 - Life jacket - Kamizelka ratunkowa
 - Life ring - Koło ratunkowe
 - Liferaft - Tratwa ratunkowa
+
 ### Rigging
+
 - Mooring line - Cuma
 - Bow line - Cuma dziobowa
 - Stern line - Cuma rufowa
@@ -68,7 +76,9 @@ This subsection contains concepts describing the construction of a yacht.
 - Kicking Strap - Obciągacz bomu
 - Clew - Szot
 - Bight - Buchta
+
 ### Sails
+
 - Jib - Fok
 - Main Sail - Grot
 - Main Sail battens - Listwy grota
@@ -78,6 +88,7 @@ This subsection contains concepts describing the construction of a yacht.
 ---
 
 ## Quay and Sailing Directions
+
 - Bollard - Poler
 - Pier/Jetty - Pomost
 - Mark/Buoy - Boja
@@ -88,6 +99,7 @@ This subsection contains concepts describing the construction of a yacht.
 ## Points of Sailing - Kursy jachtu względem wiatru
 
 ![Source: https://odyssey-sailing-club.pl](/assets/images/PointsOfSailing.jpeg)
+
 - Starboard tack - Prawy hals
 - Portside tack - Lewy hals
 - Windward - Strona nawietrzna
@@ -101,19 +113,29 @@ This subsection contains concepts describing the construction of a yacht.
 | Running / Dead before the wind | 180°                  | Fordewind  |
 
 ### Close-hauled courses
+
 #### Close reach (By the Wind) - Bajdewind
+
 The sharpest possible course a vessel can sail without losing sail power. The angle to the wind is approx. 45-80°. Sails are trimmed in tight. This course has the greatest heel and the lowest speed.
+
 #### Beam reach - Półwiatr
+
 The wind blows from the side at an angle of approx. 90°. The boat's heel decreases while its speed increases. The sails should be eased more than on a close reach.
+
 ### Off-wind courses
+
 #### Broad Reach / Quartering / Wind on the Quarter - Baksztag
+
 The wind blows from behind at an angle, greater than 90° but less than 180°. The sails should be eased well out. Aboard the boat it may feel as though you are sailing slower due to the reduced apparent wind. In practice, however, this is **the fastest point of sail on Sloop-rigged yachts**.
+
 #### Dead before the wind - Fordewind
+
 The wind blows exactly from the stern (180°). Sails are let out as far as possible, sometimes set "wing-on-wing", one on each side of the forestay.
 
 ---
 
 ## Sailing Commands
+
 - Take in (...) - Wybierz (...)
 - Trim in (...) - Wybieraj (...)
 - Let go (...) - Luz (...)

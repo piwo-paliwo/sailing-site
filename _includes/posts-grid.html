@@ -1,0 +1,8 @@
+{%- assign posts = include posts-%}
+
+<div
+    class="flex flex-row flex-wrap w-full gap-8 justify-center lg:justify-between overflow-auto"
+>
+    {% for post in site.categories.pl %} {% include post-card.html post=post %}
+    {% endfor %}
+</div>

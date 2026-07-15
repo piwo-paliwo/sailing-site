@@ -5,14 +5,21 @@
             class="flex flex-wrap justify-between gap-8 border-b border-[#1f3d54] pb-9"
         >
             <div class="flex max-w-sm flex-col gap-2.5">
-                <h3
-                    class="font-serif text-xl font-bold text-primary-foreground"
+                <div
+                    class="flex flex-row flex-nowrap gap-4 h-16 items-center-safe transition-all origin-left"
                 >
-                    Piwo Paliwo 2.0
-                </h3>
-                <p class="text-[13.5px] leading-relaxed text-secondary">
-                    Organizacja piwno-żeglarska.
-                </p>
+                    <img src="/assets/images/icon.svg" height="40" width="40" />
+                    <div class="flex select-none flex-col flex-nowrap">
+                        <h3
+                            class="font-serif text-xl font-bold text-primary-foreground"
+                        >
+                            {{ site.organization }}
+                        </h3>
+                        <p class="text-sm leading-relaxed text-secondary">
+                            Organizacja piwno-żeglarska.
+                        </p>
+                    </div>
+                </div>
             </div>
             <div class="flex flex-col gap-2.5 text-secondary">
                 {% for item in site.data.nav %} {% assign nav_url = item.href |
@@ -30,11 +37,6 @@
                     class="border-b-2 border-transparent pb-1 text-sm font-medium text-secondary hover:border-accent"
                     >Blog</a
                 >
-                <!-- <span class="mb-1.5 text-xs font-semibold uppercase tracking-[1.5px] text-gold">Explore</span>
-                <a href="{{ "/journal" | relative_url }}" class="text-[13.5px] text-fog">Journal</a>
-                <a href="{{ "/routes" | relative_url }}" class="text-[13.5px] text-fog">Itineraries</a>
-                <a href="{{ "/boats" | relative_url }}" class="text-[13.5px] text-fog">Boats</a>
-                <a href="{{ "/vocab" | relative_url }}" class="text-[13.5px] text-fog">Vocabulary</a> -->
             </div>
         </div>
         <div
