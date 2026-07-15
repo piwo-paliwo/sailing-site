@@ -1,0 +1,54 @@
+{%- comment -%} Renders one dictionary entry card. Usage: {% include
+dictionary-entry.html entry=some_entry %} {%- endcomment -%} {%- assign entry =
+include.entry -%}
+<div
+    class="font-serif flex shrink-0 items-center-safe justify-start snap-center snap-always flex-col max-w-md sm:max-w-3xl h-full gap-4 not-prose"
+>
+    <p
+        class="w-full text-start font-semibold text-7xl sm:text-9xl py-4 not-prose"
+    >
+        <span
+            class="font-bold not-prose {% if entry.titleClass %}{{ entry.titleClass }}{% endif %}"
+            >{{ entry.title }}</span
+        >
+        {%- if entry.pronunciation -%}
+        <span
+            class="text-5xl sm:text-7xl italic font-medium not-prose text-nowrap"
+        >
+            {{ entry.pronunciation }}</span
+        >
+        {%- endif -%}
+    </p>
+
+    {%- if entry.type -%}
+    <p class="w-full text-start font-medium text-2xl italic not-prose">
+        ({{ entry.type }})
+    </p>
+    {%- endif -%}
+
+    <div class="flex flex-col gap-2 w-full not-prose items-start">
+        <p class="text-start text-lg not-prose">«{{ entry.description }}»</p>
+        {%- if entry.variations and entry.variations.size > 0 -%} {%- assign
+        variations = entry.variations -%}
+        <div class="text-start not-prose">
+            <ul class="flex flex-row list-inside gap-12 list-disc not-prose">
+                {%- for variation in variations -%}
+                <li class="not-prose">{{ variation }}</li>
+                {%- endfor -%}
+            </ul>
+        </div>
+        {%- endif -%} {%- if entry.source_name -%}
+        <p class="italic font-extralight text-xs not-prose">
+            {%- if entry.source_link -%}
+            <a
+                class="italic font-extralight text-xs not-prose"
+                href="{{ entry.source_link }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                >{{ entry.source_name }}</a
+            >
+            {%- else -%} {{ entry.source_name }} {%- endif -%}
+        </p>
+        {%- endif -%}
+    </div>
+</div>

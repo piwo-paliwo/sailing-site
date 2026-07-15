@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="{{ site.lang | default: "en" }}">
+    <head>
+        {% include head.html %}
+    </head>
+    <body class="flex min-h-screen flex-col font-sans text-ink bg-foreground pt-32 sm:pt-40">
+        {% include navbar.html %}
+<div class="overflow-x-hidden min-h-[55vh] flex items-center">
+{% include piwo-paliwo-banner.html %}</div>
+        <main class="mx-auto w-full max-w-4xl flex-1 px-8 py-20 sm:py-28">
+            <article class="prose prose-primary prose-lg dark:prose-invert prose-md! md:prose-xl! marker:text-primary prose-h1:text-center">
+                {{ content }}
+            </article>
+        </main>
+        {% include footer.html %}{% include locale-toggle.html %}
+<script src="{{ '/assets/js/piwo-paliwo-banner.js' | relative_url }}"></script>
+    </body>
+</html>

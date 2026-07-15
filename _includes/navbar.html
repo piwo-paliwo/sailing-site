@@ -8,7 +8,7 @@
                 <div class="flex flex-row flex-nowrap gap-8 h-16 items-center-safe transition-all origin-left">
                     <img src="/assets/images/icon.svg" height="48" width="48">
                     <div class="flex select-none flex-col flex-nowrap">
-                        <h2 class="text-xl! sm:text-3xl! color-primary! font-serif">
+                        <h2 class="text-lg! sm:text-2xl! color-primary! font-sans">
                             {{ site.organization }}
                         </h2>
                         <h4 class="italic color-background! font-serif">Sailing</h4>
@@ -22,13 +22,13 @@
             {% for item in site.data.nav %}
                 {% assign nav_url = item.href | prepend: current_lang | prepend: "/" %}
                 <a href="{{ nav_url | relative_url }}"
-                   class="border-b-2 border-transparent pb-1 text-sm font-medium text-primary hover:border-accent">
-                    {{ item.label[current_lang] | default: item.label.en }}
+                   class="border-b-2 border-transparent pb-1 text-sm font-medium text-primary hover:border-accent"><p class="text-nowrap flex flex-row gap-1 items-center flex-nowrap text-md">{%- if item.icon -%}{% lucide_icon item.icon size=16 %}{%- endif -%}
+                    {{ item.label[current_lang] | default: item.label.en }}</p>
                 </a>
             {% endfor %}
 
             <a href="{{ 'https://piwopaliwo.pl/blog' | absolute_url }}"
-               class="border-b-2 border-transparent pb-1 text-sm font-medium text-primary! hover:border-accent">Blog</a>
+               class="border-b-2 border-transparent pb-1 text-sm font-medium text-primary! hover:border-accent"><p class="text-nowrap flex flex-row gap-1 items-center flex-nowrap text-md">{% lucide_icon "earth" size=20 %}Blog</p></a>
         </nav>
 
         <!-- {% include language-switch.html %} -->
@@ -43,13 +43,13 @@
             aria-label="Toggle navigation menu"
         >
             <!-- Hamburger icon -->
-            <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <icon id="icon-open">
+             {% lucide_icon "menu" size=24 %}
+            </icon>
             <!-- Close icon -->
-            <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <icon id="icon-close" class="hidden">
+             {% lucide_icon "x" size=24 %}
+            </icon>
         </button>
     </div>
 
@@ -62,12 +62,15 @@
             {% assign nav_url = item.href | prepend: current_lang | prepend: "/" %}
             <a href="{{ nav_url | relative_url }}"
                class="block w-full px-2 py-2.5 rounded-md text-sm font-medium text-primary hover:bg-primary-foreground/50">
-                {{ item.label[current_lang] | default: item.label.en }}
+               <p class="text-nowrap flex flex-row gap-2 items-center flex-nowrap text-md">
+               {%- if item.icon -%}{% lucide_icon item.icon size=16 %}{%- endif -%}
+                {{ item.label[current_lang] | default: item.label.en }}</p>
             </a>
         {% endfor %}
 
         <a href="{{ 'https://piwopaliwo.pl/blog' | absolute_url }}"
-           class="block w-full px-2 py-2.5 rounded-md text-sm font-medium text-primary! hover:bg-primary-foreground/50">Blog</a>
+           class="block w-full px-2 py-2.5 rounded-md text-sm font-medium text-primary! hover:bg-primary-foreground/50">
+            <p class="text-nowrap flex flex-row gap-2 items-center flex-nowrap text-md">{% lucide_icon "earth" size=20 %}Blog</p></a>
     </nav>
 </div>
 

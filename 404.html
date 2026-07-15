@@ -4,13 +4,53 @@ title: Page Not Found
 permalink: /404.html
 ---
 
-<div class="flex min-h-[50vh] flex-col items-center justify-center gap-4 text-center not-prose">
-    <header class="font-serif text-8xl font-semibold text-primary">404</header>
-    <h1 class="font-serif text-4xl font-semibold text-background">Message in a bottle</h1>
-    <p class="max-w-md text-secondary-foreground">
-        The page you're looking for has drifted off course or never existed.
-    </p>
-    <a href="{{ "/" | relative_url }}" class="mt-2 inline-block border-b border-background font-semibold text-background no-underline hover:border-accent hover:text-primary transition-all">
-        Back to safe harbor
-    </a>
+<div
+    class="flex min-h-[50vh] flex-col items-center justify-center gap-4 text-center not-prose"
+>
+    <header
+        class="font-serif text-8xl font-semibold text-primary italic not-prose"
+    >
+        404
+    </header>
+    <h1
+        class="font-serif text-4xl font-semibold text-background"
+        data-en="Message in a bottle"
+        data-pl="Wiadomość w butelce"
+    ></h1>
+    <p
+        class="max-w-md text-secondary-foreground"
+        data-en="The page you're looking for has drifted off course or never existed."
+        data-pl="Strona, której szukasz zboczyła z kursu lub zatonęła"
+    ></p>
+    <a
+        href="#"
+        id="home-link"
+        class="mt-2 inline-block border-b border-background font-semibold text-background no-underline hover:border-accent hover:text-primary transition-all"
+        data-en="Back to safe harbor"
+        data-pl="Wróć na bezpieczne wody"
+    ></a>
 </div>
+
+<script>
+    (function () {
+      var locales = {{ site.data.locales | jsonify }};
+      var codes = locales.map(function (l) { return l.code; });
+
+      var segments = window.location.pathname.split('/').filter(Boolean);
+      var lang = 'en';
+      if (segments.length && codes.indexOf(segments[0]) !== -1) {
+        lang = segments[0];
+      }
+
+      document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+      // fallback to en for any element missing a translation in this lang
+      document.querySelectorAll('[data-en]:empty').forEach(function (el) {
+        el.textContent = el.getAttribute('data-en');
+      });
+
+      var home = document.getElementById('home-link');
+      home.href = '{{ "/" | relative_url }}' + (lang !== 'en' ? lang + '/' : '');
+    })();
+</script>

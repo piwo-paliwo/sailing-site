@@ -46,3 +46,6 @@ plugins:
     - jekyll-paginate
     - jekyll-sass-converter
     - jekyll-postcss
+    - jekyll-lucide
+postcss:
+    cache: false

@@ -1,0 +1,38 @@
+{%- comment -%}
+  Scrolling "piwo/paliwo" dictionary carousel.
+
+  Usage:
+    {% include piwo-paliwo-banner.html %}
+
+  Optionally force a locale (otherwise falls back to page.lang, then
+  site.lang, then "pl"):
+    {% include piwo-paliwo-banner.html locale="cz" %}
+
+  Requires:
+    - _data/dictionary_entries.yml
+    - assets/js/piwo-paliwo-banner.js    (load before </body>)
+      (this injects its own @keyframes at runtime, no tailwind.config.js
+      changes needed — see README for why)
+
+  Note: group-hover:[animation-play-state:paused] uses Tailwind's arbitrary
+  property syntax, which needs Tailwind v3.1+.
+{%- endcomment -%}
+
+{%- assign locale = include.locale | default: page.lang | default: site.lang | default: "pl" -%}
+{%- assign filtered = site.data.carousel-dictionary | where: "locale", locale -%}
+{%- if filtered.size == 0 -%}
+  {%- assign filtered = site.data.carousel-dictionary | where: "locale", "pl" -%}
+{%- endif -%}
+
+<div class="overflow-hidden">
+<div class="carousel-piwo group relative w-screen overflow-hidden flex" id="carousel-piwo">
+  <div class="carousel-piwo-track flex flex-row w-full group-hover:[animation-play-state:paused]">
+    {%- for i in (1..2) -%}
+      {%- for entry in filtered -%}
+        <div class="flex-shrink-0 px-24">
+          {% include piwo-banner-entry.html entry=entry %}
+        </div>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</div></div>

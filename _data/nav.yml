@@ -1,19 +1,23 @@
 - ref: home
+  icon: home
   fallback: "/"
   label:
       en: Home
       pl: Strona główna
 - ref: routes
+  icon: ship-wheel
   href: "/routes"
   label:
       en: Itineraries
       pl: Trasy
 - ref: boats
+  icon: sailboat
   href: "/boats"
   label:
       en: Boats
       pl: Łodzie
 - ref: vocabulary
+  icon: languages
   href: "/vocabulary"
   label:
       en: Vocabulary
