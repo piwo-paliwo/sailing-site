@@ -10,16 +10,16 @@
 
 :root {
     --radius: 0.625rem;
-    --background: #123048;
+    --background: rgb(18, 48, 72);
     --foreground: rgb(211, 230, 248);
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.147 0.004 49.25);
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.147 0.004 49.25);
-    --primary: #0d2436;
+    --primary: rgb(13, 36, 54);
     --primary-foreground: rgb(211, 232, 253);
     --secondary: rgb(174, 206, 238);
-    --secondary-foreground: #123048;
+    --secondary-foreground: rgb(18, 48, 72);
     --muted: oklch(0.97 0.001 106.424);
     --muted-foreground: oklch(0.553 0.013 58.071);
     --accent: oklch(0.85 0.18 80);

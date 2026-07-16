@@ -1,0 +1,21 @@
+{
+    "name": "Sailing Piwo Paliwo 2.0",
+    "short_name": "sailing.piwopaliwo.pl",
+    "icons": [
+        {
+            "src": "/assets/images/icon-webmanifest-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/images/icon-webmanifest-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#d3e6f8",
+    "theme_color": "#0d2436"
+}
