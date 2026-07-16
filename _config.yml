@@ -47,5 +47,34 @@ plugins:
     - jekyll-sass-converter
     - jekyll-postcss
     - jekyll-lucide
+    - jekyll-sitemap
+defaults:
+    - scope:
+          path: "assets/images/private/**"
+      values:
+          sitemap: false
+    - scope:
+          path: "**/routes.md"
+      values:
+          sitemap: false
+    - scope:
+          path: "**/boats.md"
+      values:
+          sitemap: false
+    - scope:
+          path: "_posts/**"
+      values:
+          layout: default
+    - scope:
+          path: "**/pl/**"
+      values:
+          category: pl
+          lang: pl
+    - scope:
+          path: "**/en/**"
+      values:
+          category: en
+          lang: en
+
 postcss:
     cache: false

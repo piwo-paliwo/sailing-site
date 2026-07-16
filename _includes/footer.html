@@ -8,7 +8,13 @@
                 <div
                     class="flex flex-row flex-nowrap gap-4 h-16 items-center-safe transition-all origin-left"
                 >
-                    <img src="/assets/images/icon.svg" height="40" width="40" />
+                    <img
+                        src="/assets/images/icon.svg"
+                        height="40"
+                        width="40"
+                        loading="lazy"
+                        alt="{{ site.organization }}"
+                    />
                     <div class="flex select-none flex-col flex-nowrap">
                         <h3
                             class="font-serif text-xl font-bold text-primary-foreground"
@@ -42,11 +48,11 @@
         <div
             class="flex flex-wrap items-center justify-between gap-3 pt-6 text-secondary"
         >
-            <span class="text-[12.5px] text-[#5c7b91]">
+            <span class="text-[12.5px]">
                 &copy; <a href="https://piwopaliwo.pl">Piwo Paliwo 2.0</a> {{
                 'now' | date: "%Y" }}</span
             >
-            <span class="font-serif text-[12.5px] italic text-[#5c7b91]"
+            <span class="font-serif text-[12.5px] italic"
                 >&ldquo;Kegi piwa nam nie zwiało...&rdquo;</span
             >
         </div>

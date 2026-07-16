@@ -1,7 +1,12 @@
 {%- assign user = include.user-%} {%- assign showName = include.showName-%}
 <div class="flex flex-row gap-4 items-center-safe not-prose">
     <div class="rounded-full w-12 h-12 overflow-hidden not-prose">
-        <img src="{{ user.avatarUrl}}" class="not-prose" />
+        <img
+            src="{{ user.avatarUrl}}"
+            class="not-prose"
+            loading="lazy"
+            alt="{{ user.name }}"
+        />
     </div>
     {%- if showName -%}
     <h4 class="font-serif not-prose font-light">{{user.name}}</h4>

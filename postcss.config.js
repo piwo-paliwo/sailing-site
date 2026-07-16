@@ -3,5 +3,6 @@ module.exports = {
         require("postcss-import"),
         require("@tailwindcss/postcss"),
         require("autoprefixer"),
+        require("cssnano"),
     ],
 };
